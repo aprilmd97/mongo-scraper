@@ -1,6 +1,7 @@
 //dependencies
-var express = require("express");
+require('dotenv').config();
 
+var express = require("express");
 var exphbs = require("express-handlebars");
 
 var path = require("path");
@@ -16,11 +17,14 @@ var axios = require("axios");
 
 //set mongoose
 
+var uri = "mongodb://heroku_v0sv5zr5:7f1nadci038haqqkjkogiq5u1r@ds147125.mlab.com:47125/heroku_v0sv5zr5";
+
 //This code should connect mongoose
 //to your remote mongolab database if deployed, but otherwise will connect to
 //the local mongoHeadlines database on your computer
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
+//var MONGODB_GRAY_URI = process.env.MONGODB_GRAY_URI || //"mongodb://localhost/mongoHeadlines";
+mongoose.connect(uri);
 
 var dtb = mongoose.connection;
 
