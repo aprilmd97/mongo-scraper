@@ -35,6 +35,10 @@
             border-style: solid;
 
         }
+
+        .box {
+            display: inline-flexbox;
+        }
     </style>
 </head>
 
@@ -61,10 +65,10 @@
 
         <div class="col-sm-6">
             {{#each tweet}}
-            <button type="button" class="btn-outline-danger" data-toggle="collapse" href="#{{ id }}" role="button"
-                aria-expanded="false" aria-controls="{{ id }}">{{ this }}</button>
+            <button type="button" class="btn-outline-danger" data-toggle="collapse" href="#collapseExample"
+                role="button" aria-expanded="false" aria-controls="collapseExample">{{ this }}</button>
 
-            <div class="collapse" id="{{id}}">
+            <div class="collapse" id="collapseExample">
                 <div class="card card-body">
 
                     <div class="input-group">
@@ -72,11 +76,13 @@
                             <span class="input-group-text">Write Comment</span>
                         </div>
                         <textarea class="form-control" aria-label="With textarea"></textarea>
-                        <button type="submit" class="btn btn-danger">Submit!</button>
+                        <button type="submit" class="btn btn-danger submit">Submit!</button>
                     </div>
                     <br>
                     <p class="font-weight-bold">COMMENTS</p>
                     <hr>
+                    <div class="box">
+                    </div>
 
 
                 </div>
@@ -91,9 +97,18 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script>
-        $("button").on("click", function () {
-            console.log({{ id }});
-    });
+
+
+        $(".submit").on("click", function () {
+            var comment = $("textarea").val();
+
+            var $p = $("<p>", { "class": "comment" }).text(comment);
+            $(".box").append($p);
+            console.log($p);
+            $("textarea").val(" ");
+        });
+
+
 
     </script>
 </body>

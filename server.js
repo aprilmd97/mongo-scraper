@@ -107,7 +107,6 @@ app.get("/", function (req, res) {
             var theTweet = data[i].tweet;
 
             handlebarsObj.tweet.push(theTweet);
-            handlebarsObj.id.push(idNum);
         }
 
 
